@@ -21,13 +21,13 @@ jobs:
         with:
           deno-version: v1.x
       # The third step is a Flat Action step. We fetch the data in the http_url and save it as downloaded_filename
-      - name: Fetch data 
+      - name: Fetch User agents 
         uses: githubocto/flat@v3
         with:
           http_url: https://ja3er.com/getAllUasJson # The data to fetch every 5 minutes
           downloaded_filename: user_agent.json # The http_url gets saved and renamed in our repository as btc-price.json
           # mask: true # optional param to mask the source http_url from the commit. Look at README for more options
-      - name: Fetch data 
+      - name: Fetch Ja3 tokens 
         uses: githubocto/flat@v3
         with:
           http_url: https://ja3er.com/getAllHashesJson # The data to fetch every 5 minutes
