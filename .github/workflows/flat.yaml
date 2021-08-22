@@ -20,17 +20,14 @@ jobs:
         uses: denoland/setup-deno@main
         with:
           deno-version: v1.x
-      # The third step is a Flat Action step. We fetch the data in the http_url and save it as downloaded_filename
       - name: Fetch User agents 
         uses: githubocto/flat@v3
         with:
-          http_url: https://ja3er.com/getAllUasJson # The data to fetch every 5 minutes
+          http_url: https://ja3er.com/getAllUasJson
           downloaded_filename: user_agent.json # The http_url gets saved and renamed in our repository as btc-price.json
-          # mask: true # optional param to mask the source http_url from the commit. Look at README for more options
       - name: Fetch Ja3 tokens 
-        uses: githubocto/flat@v3
+        uses: githubocto/flat@v2
         with:
           http_url: https://ja3er.com/getAllHashesJson # The data to fetch every 5 minutes
           downloaded_filename: ja3tokens.json # The http_url gets saved and renamed in our repository as btc-price.json
           postprocess: parse.js # A postprocessing javascript or typescript file written in Deno
-          # mask: true # optional param to mask the source http_url from the commit. Look at README for more options
