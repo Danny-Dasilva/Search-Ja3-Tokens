@@ -6,8 +6,8 @@ import { readJSON, writeJSON, removeFile } from 'https://deno.land/x/flat@0.0.11
 
 // Step 1: Read the downloaded_filename JSON
 // const filename = Deno.args[0] // Same name as downloaded_filename `const filename = 'btc-price.json';`
-const user_agent = 'user_agent.json'
-const token_data = 'ja3tokens.json';
+const user_agent = './user_agent-parsed.json'
+const token_data = './ja3tokens.json';
 
 
 // let token_data = fs.readFileSync('ja3tokens.json');
@@ -20,8 +20,6 @@ let filtered_user_agent = await readJSON(user_agent)
 filtered_user_agent = Object.values(filtered_user_agent)
 // const json_obj = Object.values(json)
 
-filtered_user_agent = filtered_user_agent.filter(d => d.Count > 10);
-filtered_user_agent = filtered_user_agent.filter(d => d["User-Agent"] !== '');
 
 let combino = []
 for (let a of filtered_token) {
