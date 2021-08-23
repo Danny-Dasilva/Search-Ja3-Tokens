@@ -26,26 +26,8 @@ jobs:
           http_url: https://ja3er.com/getAllUasJson
           downloaded_filename: user_agent.json # The http_url gets saved and renamed in our repository as btc-price.json
       - name: Fetch Ja3 tokens 
-        uses: githubocto/flat@v2
+        uses: githubocto/flat@v3
         with:
           http_url: https://ja3er.com/getAllHashesJson # The data to fetch every 5 minutes
           downloaded_filename: ja3tokens.json # The http_url gets saved and renamed in our repository as btc-price.json
           # postprocess: parse.js # A postprocessing javascript or typescript file written in Deno
-  postprocess:
-    runs-on: ubuntu-latest
-    needs: scheduled
-    steps:
-      - name: Setup deno
-        uses: denoland/setup-deno@main
-        with:
-          deno-version: v1.x
-      - name: Checkout code
-        uses: actions/checkout@master
-      - name: Process files
-        run: deno run -A --unstable ./parse.js
-      - name: Commit & Push changes
-        uses: actions-js/push@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
-          force: true
