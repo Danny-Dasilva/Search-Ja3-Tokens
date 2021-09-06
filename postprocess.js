@@ -43,10 +43,10 @@ for (let a of filtered_token) {
 // }));
 
 // Step 3. Write a new JSON file with our filtered data
-const newFilename = `ja3er-price-postprocessed.json` // name of a new file to be saved
+const newFilename = `ja3er-postprocessed.json` // name of a new file to be saved
 await writeJSON(newFilename, combino) // create a new JSON file with just the Bitcoin price
 console.log("Wrote a post process file")
 
 // // Optionally delete the original file
 await removeFile('./ja3er.json') // equivalent to removeFile('btc-price.json')
-await removeFile('./user_agent.json')
+await removeFile('./user_agent-parsed.json')
