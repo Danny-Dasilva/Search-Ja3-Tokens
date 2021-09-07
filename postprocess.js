@@ -7,7 +7,7 @@ import { readJSON, writeJSON, removeFile } from 'https://deno.land/x/flat@0.0.11
 // Step 1: Read the downloaded_filename JSON
 // const filename = Deno.args[0] // Same name as downloaded_filename `const filename = 'btc-price.json';`
 const user_agent = './user_agent-parsed.json'
-const token_data = './ja3tokens.json';
+const token_data = Deno.args[0] 
 
 
 // let token_data = fs.readFileSync('ja3tokens.json');
@@ -48,5 +48,5 @@ await writeJSON(newFilename, combino) // create a new JSON file with just the Bi
 console.log("Wrote a post process file")
 
 // // Optionally delete the original file
-await removeFile('./ja3er.json') // equivalent to removeFile('btc-price.json')
+await removeFile('./ja3tokens.json') // equivalent to removeFile('btc-price.json')
 await removeFile('./user_agent-parsed.json')
