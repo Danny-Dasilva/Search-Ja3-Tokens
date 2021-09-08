@@ -27,7 +27,7 @@ for (let a of filtered_token) {
     for (let b of filtered_user_agent) {
         const md52 = b.md5
         if (md5 === md52) {
-            combino.push({md5: md5, ja3: a.ja3, "User-Agent": b["User-Agent"]})
+            combino.push({md5: md5, ja3: a.ja3, "User-Agent": b["User-Agent"], Count: b.Count})
             break;
         }
         
