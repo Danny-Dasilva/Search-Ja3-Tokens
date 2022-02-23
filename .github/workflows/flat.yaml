@@ -1,32 +1,32 @@
-name: Flat
+# name: Flat
 
-on:
-  push:
-    paths:
-      - .github/workflows/flat.yml # Only run a new workflow every time this file (flat.yaml) file changes
-  workflow_dispatch: # Required even though this is currently empty
-  schedule:
-    - cron: '0 1 * * *' # Run this workflow every 5 minutes
+# on:
+#   push:
+#     paths:
+#       - .github/workflows/flat.yml # Only run a new workflow every time this file (flat.yaml) file changes
+#   workflow_dispatch: # Required even though this is currently empty
+#   schedule:
+#     - cron: '0 1 * * *' # Run this workflow every 5 minutes
 
-jobs:
-  scheduled:
-    runs-on: ubuntu-latest
-    steps: # This workflow has 3 steps
-      - name: Setup deno
-        uses: denoland/setup-deno@main
-        with:
-          deno-version: v1.10.x
-      - name: Check out repo
-        uses: actions/checkout@v2
-      - name: Fetch User agents 
-        uses: githubocto/flat@v3
-        with:
-          http_url: https://ja3er.com/getAllUasJson
-          downloaded_filename: user_agent.json # The http_url gets saved and renamed in our repository as btc-price.json
-          postprocess: user-agent-parse.js
-      - name: Fetch Ja3 tokens 
-        uses: githubocto/flat@v3
-        with:
-          http_url: https://ja3er.com/getAllHashesJson # The data to fetch every 5 minutes
-          downloaded_filename: ja3tokens.json # The http_url gets saved and renamed in our repository as btc-price.json
-          postprocess: postprocess.js # A postprocessing javascript or typescript file written in Deno
+# jobs:
+#   scheduled:
+#     runs-on: ubuntu-latest
+#     steps: # This workflow has 3 steps
+#       - name: Setup deno
+#         uses: denoland/setup-deno@main
+#         with:
+#           deno-version: v1.10.x
+#       - name: Check out repo
+#         uses: actions/checkout@v2
+#       - name: Fetch User agents 
+#         uses: githubocto/flat@v3
+#         with:
+#           http_url: https://ja3er.com/getAllUasJson
+#           downloaded_filename: user_agent.json # The http_url gets saved and renamed in our repository as btc-price.json
+#           postprocess: user-agent-parse.js
+#       - name: Fetch Ja3 tokens 
+#         uses: githubocto/flat@v3
+#         with:
+#           http_url: https://ja3er.com/getAllHashesJson # The data to fetch every 5 minutes
+#           downloaded_filename: ja3tokens.json # The http_url gets saved and renamed in our repository as btc-price.json
+#           postprocess: postprocess.js # A postprocessing javascript or typescript file written in Deno
